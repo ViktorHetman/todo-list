@@ -21,12 +21,20 @@ function App() {
   const deleteTodoHandler = (id) => {
     return setTodos(todos.filter((todo) => todo.id !== id))
   }
+
+  const toggleTodoHandler = (id) => {
+    setTodos(todos.map((todo) => {
+      return todo.id === id
+      ? {...todo, isComplited: !todo.isComplited}
+      : {...todo}
+    }))
+  }
   
   return (
     <div className="App">
       <h1>Todo App</h1>
       <TodoForm addTodo={addTodoHandler} />
-      <TodoList todos={todos} deleteTodo={deleteTodoHandler}/>
+      <TodoList todos={todos} deleteTodo={deleteTodoHandler} toggleTodo={toggleTodoHandler}/>
     </div>
   )
 }
