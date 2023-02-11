@@ -28,12 +28,16 @@ function App() {
       : {...todo}
     }))
   }
+
+  const resetTodosHandler = () => {
+    setTodos([])
+  }
   
   return (
     <div className="App">
       <h1>Todo App</h1>
       <TodoForm addTodo={addTodoHandler} />
-      <TodoActions />
+      <TodoActions resetTodos={resetTodosHandler}/>
       <TodoList todos={todos} deleteTodo={deleteTodoHandler} toggleTodo={toggleTodoHandler}/>
     </div>
   )
