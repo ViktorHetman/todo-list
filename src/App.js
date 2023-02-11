@@ -12,7 +12,7 @@ function App() {
     const newTodo = {
       text,
       isComplited: false,
-      id: uuidv4()
+      id: uuidv4(),
     }
     setTodos([...todos, newTodo])
   }
@@ -22,11 +22,13 @@ function App() {
   }
 
   const toggleTodoHandler = (id) => {
-    setTodos(todos.map((todo) => {
-      return todo.id === id
-      ? {...todo, isComplited: !todo.isComplited}
-      : {...todo}
-    }))
+    setTodos(
+      todos.map((todo) => {
+        return todo.id === id
+          ? { ...todo, isComplited: !todo.isComplited }
+          : { ...todo }
+      })
+    )
   }
 
   const resetTodosHandler = () => {
@@ -35,14 +37,22 @@ function App() {
 
   const deleteCompletedTodosHandler = () => {
     setTodos(todos.filter((todo) => !todo.isComplited))
-  } 
+  }
   
+
   return (
     <div className="App">
       <h1>Todo App</h1>
       <TodoForm addTodo={addTodoHandler} />
-      <TodoActions resetTodos={resetTodosHandler} deleteCompletedTodos={deleteCompletedTodosHandler}/>
-      <TodoList todos={todos} deleteTodo={deleteTodoHandler} toggleTodo={toggleTodoHandler}/>
+      {!!todos.length && <TodoActions
+        resetTodos={resetTodosHandler}
+        deleteCompletedTodos={deleteCompletedTodosHandler}
+      />}
+      <TodoList
+        todos={todos}
+        deleteTodo={deleteTodoHandler}
+        toggleTodo={toggleTodoHandler}
+      />
     </div>
   )
 }
