@@ -4,6 +4,7 @@ import TodoForm from './Components/TodoForm/TodoForm'
 import TodoList from './Components/TodoList/TodoList'
 import TodoActions from './Components/TodoActions/TodoActions'
 import './App.css'
+import Todo from './Components/Todo/Todo'
 
 function App() {
   const [todos, setTodos] = useState([])
@@ -17,13 +18,15 @@ function App() {
     setTodos([...todos, newTodo])
   }
 
-
+  const deleteTodoHandler = (id) => {
+    setTodos(todos.filter((todo) => todo.id !== id))
+  }
   
   return (
     <div className="App">
       <h1>Todo App</h1>
       <TodoForm addTodo={addTodoHandler} />
-      <TodoList todos={todos} />
+      <TodoList todos={todos} deleteTodo={deleteTodoHandler}/>
     </div>
   )
 }
