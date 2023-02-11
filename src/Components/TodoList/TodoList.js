@@ -1,12 +1,14 @@
-import Todo from '../Todo/Todo'
 import React from 'react'
+import Todo from '../Todo/Todo'
+import styles from './TodoList.module.css'
 
-function TodoList({todos}) {
+function TodoList({ todos }) {
   return (
-    <div>
-       {todos.map((todo, index) => {
-        return <Todo key={index} todo={todo}/>
-       })}
+    <div className={styles.todoListContainer}>
+        {!todos.length && <h2>Todo list is empty</h2>}
+      {todos.map((todo, index) => {
+        return <Todo key={index} todo={todo} />
+      })}
     </div>
   )
 }
