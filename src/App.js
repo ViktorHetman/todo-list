@@ -18,7 +18,7 @@ function App() {
   }
 
   const deleteTodoHandler = (id) => {
-    return setTodos(todos.filter((todo) => todo.id !== id))
+     setTodos(todos.filter((todo) => todo.id !== id))
   }
 
   const toggleTodoHandler = (id) => {
